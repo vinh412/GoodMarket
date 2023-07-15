@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useAuthContext } from '../../hooks/useAuthContext';
 import customTheme from './theme'
 import { CssVarsProvider } from "@mui/joy/styles";
 import { Box, Typography, Card, Container, Grid, FormControl, FormLabel, Input, Button, Link, Checkbox, Divider } from '@mui/joy'
@@ -8,6 +9,7 @@ import GoogleIcon from './GoogleIcon';
 function LogIn() {
     const navigate = useNavigate();
     const [error, setError] = useState();
+    const { dispatch } = useAuthContext();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -32,6 +34,8 @@ function LogIn() {
                 setError(data.error);
             }
             if(data.user){
+                localStorage.setItem('user', JSON.stringify(data.user))
+                dispatch({type: 'LOGIN', payload: data.user});
                 navigate("../");
             }
         }catch (err) {
