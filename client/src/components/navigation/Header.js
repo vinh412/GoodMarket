@@ -72,6 +72,11 @@ export default function Header() {
     setOpen(false);
   };
 
+  const handleMyShop = () => {
+    navigate('/shop');
+    setOpen(false);
+  }
+
   const handleLogout = async () => {
     try{
       await fetch('api/v1/auth/logout');
@@ -95,7 +100,7 @@ export default function Header() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1, cursor: 'pointer' }} onClick={()=>navigate('/')}>
             GoodMarket
           </Typography>
           <Search>
@@ -142,8 +147,8 @@ export default function Header() {
                 onClose={handleClose}
                 aria-labelledby="basic-demo-button"
               >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
                 <MenuItem onClick={handleClose}>My account</MenuItem>
+                <MenuItem onClick={handleMyShop}>My shop</MenuItem>
                 <MenuItem onClick={handleLogout}>Logout</MenuItem>
               </Menu>
               <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>{`${user.firstname} ${user.lastname}`}</Typography>

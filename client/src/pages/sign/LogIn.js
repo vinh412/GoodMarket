@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuthContext } from '../../hooks/useAuthContext';
-import customTheme from './theme'
+import customTheme from '../../theme/theme'
 import { CssVarsProvider } from "@mui/joy/styles";
 import { Box, Typography, Card, Container, Grid, FormControl, FormLabel, Input, Button, Link, Checkbox, Divider } from '@mui/joy'
 import GoogleIcon from './GoogleIcon';
