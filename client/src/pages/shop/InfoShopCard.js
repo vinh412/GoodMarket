@@ -12,44 +12,46 @@ import customTheme from '../../theme/theme'
 function InfoShopCard() {
     return (
         <CssVarsProvider theme={customTheme}>
-        <Container maxWidth='xl'>
-            <Grid container columnSpacing={10}>
-                <Grid xs={4}>
-                    <Card>
-                        <CardCover>
-                            <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSYqu1WVx_8aJ5C8yx-6f3ORH3x2042g0vY6GF5bUGBi-AF1DmRyV_igqitHiyHWO8jek&usqp=CAU' />
-                        </CardCover>
-                        <CardContent>
-                            <Grid container spacing={2}>
-                                <Grid xs={3}>
-                                    <Avatar sx={{ width: '5rem', height: '5rem' }}></Avatar>
+            <Card sx={{p: 4, mt: 3}}>
+
+                <Grid container columnSpacing={10}>
+                    <Grid xs={5}>
+                        <Card>
+                            <CardCover>
+                                <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSYqu1WVx_8aJ5C8yx-6f3ORH3x2042g0vY6GF5bUGBi-AF1DmRyV_igqitHiyHWO8jek&usqp=CAU' />
+                            </CardCover>
+                            <CardContent>
+                                <Grid container spacing={2}>
+                                    <Grid xs={3}>
+                                        <Avatar sx={{ width: '5rem', height: '5rem' }}></Avatar>
+                                    </Grid>
+                                    <Grid xs={9}>
+                                        <Typography level='h3'>Gấu Bông Vân Anh</Typography>
+                                        <Typography level='p'>Online 6 phút trước</Typography>
+                                    </Grid>
+                                    <Grid xs={6}>
+                                        <Button fullWidth startDecorator={<AddBoxOutlinedIcon />}>Theo dõi</Button>
+                                    </Grid>
+                                    <Grid xs={6}>
+                                        <Button fullWidth startDecorator={<ChatOutlinedIcon />}>Chat</Button>
+                                    </Grid>
                                 </Grid>
-                                <Grid xs={9}>
-                                    <Typography level='h3'>Gấu Bông Vân Anh</Typography>
-                                    <Typography level='p'>Online 6 phút trước</Typography>
-                                </Grid>
-                                <Grid xs={6}>
-                                    <Button fullWidth startDecorator={<AddBoxOutlinedIcon />}>Theo dõi</Button>
-                                </Grid>
-                                <Grid xs={6}>
-                                    <Button fullWidth startDecorator={<ChatOutlinedIcon />}>Chat</Button>
-                                </Grid>
-                            </Grid>
-                        </CardContent>
-                    </Card>
+                            </CardContent>
+                        </Card>
+                    </Grid>
+                    <Grid xs={3} container direction='column' justifyContent='space-around'>
+                        <Typography startDecorator={<StorefrontOutlinedIcon />}>Sản phẩm: </Typography>
+                        <Typography startDecorator={<PersonAddAltOutlinedIcon />}>Đang theo dõi: </Typography>
+                        <Typography startDecorator={<ChatOutlinedIcon />}>Tỷ lệ phản hồi chat: </Typography>
+                    </Grid>
+                    <Grid xs={3} container direction='column' justifyContent='space-around'>
+                        <Typography startDecorator={<PeopleAltOutlinedIcon />}>Người theo dõi: </Typography>
+                        <Typography startDecorator={<StarBorderOutlinedIcon />}>Đánh giá: </Typography>
+                        <Typography startDecorator={<HowToRegOutlinedIcon />}>Tham gia: </Typography>
+                    </Grid>
                 </Grid>
-                <Grid xs={3} container direction='column' justifyContent='space-around'>
-                    <Typography startDecorator={<StorefrontOutlinedIcon />}>Sản phẩm: </Typography>
-                    <Typography startDecorator={<PersonAddAltOutlinedIcon />}>Đang theo dõi: </Typography>
-                    <Typography startDecorator={<ChatOutlinedIcon />}>Tỷ lệ phản hồi chat: </Typography>
-                </Grid>
-                <Grid xs={3} container direction='column' justifyContent='space-around'>
-                    <Typography startDecorator={<PeopleAltOutlinedIcon />}>Người theo dõi: </Typography>
-                    <Typography startDecorator={<StarBorderOutlinedIcon />}>Đánh giá: </Typography>
-                    <Typography startDecorator={<HowToRegOutlinedIcon />}>Tham gia: </Typography>
-                </Grid>
-            </Grid>
-        </Container>
+            </Card>
+
         </CssVarsProvider>
     )
 }

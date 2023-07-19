@@ -88,8 +88,7 @@ export default function Header() {
   }
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" variant='elevation'>
+      <AppBar position="fixed" variant='elevation' >
         <Toolbar>
           <IconButton
             size="large"
@@ -161,6 +160,5 @@ export default function Header() {
           )}
         </Toolbar>
       </AppBar>
-    </Box>
   );
 }

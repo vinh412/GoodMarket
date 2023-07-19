@@ -2,6 +2,8 @@ import React from 'react'
 import CreateShop from './CreateShop'
 import InfoShopCard from './InfoShopCard';
 import { Box, Container, Grid, Typography } from '@mui/joy';
+import ShopDrawer from '../../components/navigation/ShopDrawer';
+import { Toolbar } from '@mui/material';
 
 
 function MyShop() {
@@ -16,23 +18,28 @@ function MyShop() {
   }, []);
 
   return (
-    <div>
-      {loading ? (
-        <div>loading please wait</div>
-      ) : (
-        <div>
-          {shop ? (
-            <Box sx={{p: 3, backgroundColor: '#fff'}}>
-              <InfoShopCard/>
-            </Box>
-          ) : (
-            <CreateShop />
-          )
-          }
-        </div>
-      )
-      }
-    </div>
+    <Box sx={{display: 'flex'}}>
+      <ShopDrawer />
+      <Box sx={{ flexGrow: 1 }}>
+        <Toolbar />
+        {loading ? (
+          <div>loading please wait</div>
+        ) : (
+          <div>
+            {shop ? (
+              <Container>
+                <InfoShopCard />
+              </Container>
+            ) : (
+              <CreateShop />
+            )
+            }
+          </div>
+        )
+        }
+      </Box>
+
+    </Box>
   )
 }
 
