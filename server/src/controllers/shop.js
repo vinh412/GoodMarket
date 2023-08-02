@@ -1,5 +1,6 @@
 import db from '../models'
-
+import { v4 as uuidv4 } from 'uuid';
+const path = require('path')
 
 export const createShop = async (req, res) => {
     let userId = req.user.id;
@@ -42,4 +43,35 @@ export const getShop = async (req, res) => {
     }catch(error) {
         return res.status(500).json(error);
     }
+};
+
+export const updateProfileShop = async (req, res) => {
+    const userId = req.user.id;
+    const { displayName } = req.body;
+    if(!req.files){
+        await db.Shop.update({ displayName: displayName }, {
+            where: {
+                userId: userId
+            }
+        });
+        return res.status(200).json({ message: 'Update displayname success!' });
+    }
+    const { avatar, background } = req.files;
+
+    // use uuidv4 for generate filename of image
+    const avatarFilename = `${uuidv4()}.${avatar.name.split('.')[1]}`;
+    const backgroundFilename = `${uuidv4()}.${background.name.split('.')[1]}`;
+
+    // move image to public/images folder
+    avatar.mv(path.resolve(__dirname, '../', 'public', 'images', avatarFilename));
+    background.mv(path.resolve(__dirname, '../', 'public', 'images', backgroundFilename));
+
+    // save image filename to database
+    await db.Shop.update({ displayName: displayName, avatar: avatarFilename, background: backgroundFilename }, {
+        where: {
+            userId: userId
+        }
+    });
+
+    res.status(200).json({message: 'Update displayname, avatar, background success'});
 };

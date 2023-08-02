@@ -31,6 +31,12 @@ module.exports = (sequelize, DataTypes) => {
         displayName: {
             type: DataTypes.STRING
         },
+        avatar: {
+            type: DataTypes.STRING
+        },
+        background: {
+            type: DataTypes.STRING
+        },
     },
         {
             sequelize,

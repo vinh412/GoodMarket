@@ -8,5 +8,6 @@ router.use(requireAuth)
 
 router.get('/', shopController.getShop);
 router.post('/createShop', shopController.createShop);
+router.post('/updateProfile', shopController.updateProfileShop);
 
 export default router

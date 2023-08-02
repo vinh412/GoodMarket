@@ -1,5 +1,5 @@
 import React from 'react'
-import { Avatar, Button, Card, CardContent, CardCover, Grid, Typography, Container } from '@mui/joy'
+import { Avatar, Button, Card, CardContent, CardCover, Grid, Typography } from '@mui/joy'
 import { CssVarsProvider } from '@mui/joy/styles';
 import ChatOutlinedIcon from '@mui/icons-material/ChatOutlined';
 import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
@@ -9,7 +9,7 @@ import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
 import HowToRegOutlinedIcon from '@mui/icons-material/HowToRegOutlined';
 import StorefrontOutlinedIcon from '@mui/icons-material/StorefrontOutlined';
 import customTheme from '../../theme/theme'
-function InfoShopCard() {
+function InfoShopCard({shop}) {
     return (
         <CssVarsProvider theme={customTheme}>
             <Card sx={{p: 4, mt: 3}}>
@@ -18,16 +18,16 @@ function InfoShopCard() {
                     <Grid xs={5}>
                         <Card>
                             <CardCover>
-                                <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSYqu1WVx_8aJ5C8yx-6f3ORH3x2042g0vY6GF5bUGBi-AF1DmRyV_igqitHiyHWO8jek&usqp=CAU' />
+                                <img src={shop && `${process.env.REACT_APP_IMAGE_URL}${shop.background}`} alt='' style={{filter: "contrast(0.3)"}} />
                             </CardCover>
                             <CardContent>
                                 <Grid container spacing={2}>
                                     <Grid xs={3}>
-                                        <Avatar sx={{ width: '5rem', height: '5rem' }}></Avatar>
+                                        <Avatar sx={{ width: '5rem', height: '5rem' }} src={shop && `${process.env.REACT_APP_IMAGE_URL}${shop.avatar}`}></Avatar>
                                     </Grid>
                                     <Grid xs={9}>
-                                        <Typography level='h3'>Gấu Bông Vân Anh</Typography>
-                                        <Typography level='p'>Online 6 phút trước</Typography>
+                                        <Typography level='h3' textColor={'common.white'}>{(shop && shop.displayName) || 'Gấu Bông Vân Anh' }</Typography>
+                                        <Typography level='p' textColor={'common.white'}>Online 6 phút trước</Typography>
                                     </Grid>
                                     <Grid xs={6}>
                                         <Button fullWidth startDecorator={<AddBoxOutlinedIcon />}>Theo dõi</Button>

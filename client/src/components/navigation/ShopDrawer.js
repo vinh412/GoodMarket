@@ -1,11 +1,9 @@
-import React from 'react'
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Toolbar from '@mui/material/Toolbar';
-import Divider from '@mui/material/Divider';
 import List from '@mui/material/List';
-import ListSubheader from '@mui/material/ListSubheader';
-import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
@@ -21,6 +19,7 @@ import StarBorder from '@mui/icons-material/StarBorder';
 const drawerWidth = 260;
 
 function ShopDrawer() {
+    const navigate = useNavigate();
     const [openShopItems, setOpenShopItems] = React.useState(false);
     const [openProductItems, setOpenProductItems] = React.useState(false);
 
@@ -31,7 +30,7 @@ function ShopDrawer() {
     setOpenProductItems(!openProductItems);
   };
     return (
-        <Drawer variant='permanent' sx={{ width: drawerWidth, flexShrink: 0, zIndex: 0, [`& .MuiDrawer-paper`]: { width: drawerWidth, boxSizing: 'border-box' }, }}>
+        <Drawer variant='permanent' sx={{ width: drawerWidth, flexShrink: 0, [`& .MuiDrawer-paper`]: { width: drawerWidth, boxSizing: 'border-box', zIndex: 0 }, }}>
             <Toolbar />
             <Box sx={{ overflow: 'auto' }}>
                 <List
@@ -48,7 +47,7 @@ function ShopDrawer() {
                     </ListItemButton>
                     <Collapse in={openProductItems} timeout="auto" unmountOnExit>
                         <List component="div" disablePadding>
-                            <ListItemButton sx={{ pl: 4 }}>
+                            <ListItemButton sx={{ pl: 4 }} onClick={() => navigate('/shop/products')}>
                                 <ListItemIcon>
                                     <StarBorder />
                                 </ListItemIcon>

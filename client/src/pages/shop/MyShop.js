@@ -1,9 +1,9 @@
 import React from 'react'
 import CreateShop from './CreateShop'
 import InfoShopCard from './InfoShopCard';
-import { Box, Container, Grid, Typography } from '@mui/joy';
-import ShopDrawer from '../../components/navigation/ShopDrawer';
-import { Toolbar } from '@mui/material';
+import { Box, Container } from '@mui/joy';
+import ShopProfile from './ShopProfile';
+import ProductCard from '../product/ProductCard';
 
 
 function MyShop() {
@@ -18,17 +18,18 @@ function MyShop() {
   }, []);
 
   return (
-    <Box sx={{display: 'flex'}}>
-      <ShopDrawer />
       <Box sx={{ flexGrow: 1 }}>
-        <Toolbar />
         {loading ? (
           <div>loading please wait</div>
         ) : (
           <div>
             {shop ? (
               <Container>
-                <InfoShopCard />
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                  <InfoShopCard shop={shop}/>
+                  <ShopProfile shop={shop}/>
+                  <ProductCard />
+                </Box>
               </Container>
             ) : (
               <CreateShop />
@@ -38,8 +39,6 @@ function MyShop() {
         )
         }
       </Box>
-
-    </Box>
   )
 }
 

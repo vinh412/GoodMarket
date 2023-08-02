@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../hooks/useAuthContext';
 // import mui ui
 import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { styled, alpha } from '@mui/material/styles';
@@ -88,7 +87,7 @@ export default function Header() {
   }
 
   return (
-      <AppBar position="fixed" variant='elevation' >
+      <AppBar position="fixed" variant='elevation' sx={{zIndex: 10}}>
         <Toolbar>
           <IconButton
             size="large"
