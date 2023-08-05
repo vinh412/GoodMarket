@@ -1,0 +1,11 @@
+.previewImg{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 1;
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+.previewImg:hover{
+    opacity: 0.5;
+}

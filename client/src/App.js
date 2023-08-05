@@ -21,6 +21,7 @@ import ProductCard from "./pages/product/ProductCard";
 import CreateShop from "./pages/shop/CreateShop";
 import AllProducts from "./pages/product/AllProducts";
 import AddProduct from "./pages/product/AddProduct";
+import Product from "./pages/product/Product";
 
 function App() {
   const { user } = useAuthContext();
@@ -57,6 +58,7 @@ function App() {
         <Routes>
           <Route element={<DefaultLayout />} >
             <Route index element={<Home />} />
+            <Route path="/:productId" element={<Product />} />
             <Route path="/blogs" element={user ? <h1>Blogs</h1> : <Navigate to="/login" />} />
             <Route path="/shop" element={user ? <ShopLayout /> : <Navigate to="/login" />}>
               <Route index element={<MyShop />} />
