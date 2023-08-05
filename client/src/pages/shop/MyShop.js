@@ -18,27 +18,25 @@ function MyShop() {
   }, []);
 
   return (
-      <Box sx={{ flexGrow: 1 }}>
-        {loading ? (
-          <div>loading please wait</div>
-        ) : (
-          <div>
-            {shop ? (
-              <Container>
-                <Box sx={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                  <InfoShopCard shop={shop}/>
-                  <ShopProfile shop={shop}/>
-                  <ProductCard />
-                </Box>
-              </Container>
-            ) : (
-              <CreateShop />
-            )
-            }
-          </div>
-        )
-        }
-      </Box>
+    <Box sx={{ flexGrow: 1 }}>
+      {loading ? (
+        <div>loading please wait</div>
+      ) : (
+        <div>
+          {shop ? (
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <InfoShopCard shop={shop} />
+              <ShopProfile shop={shop} />
+              <ProductCard />
+            </Box>
+          ) : (
+            <CreateShop />
+          )
+          }
+        </div>
+      )
+      }
+    </Box>
   )
 }
 

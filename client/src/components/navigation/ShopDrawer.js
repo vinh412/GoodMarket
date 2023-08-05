@@ -47,13 +47,13 @@ function ShopDrawer() {
                     </ListItemButton>
                     <Collapse in={openProductItems} timeout="auto" unmountOnExit>
                         <List component="div" disablePadding>
-                            <ListItemButton sx={{ pl: 4 }} onClick={() => navigate('/shop/products')}>
+                            <ListItemButton sx={{ pl: 4 }} onClick={() => navigate('/shop/product/all')}>
                                 <ListItemIcon>
                                     <StarBorder />
                                 </ListItemIcon>
                                 <ListItemText primary="Tất cả" />
                             </ListItemButton>
-                            <ListItemButton sx={{ pl: 4 }}>
+                            <ListItemButton sx={{ pl: 4 }} onClick={() => navigate('/shop/product/add')}>
                                 <ListItemIcon>
                                     <AddIcon />
                                 </ListItemIcon>
@@ -70,7 +70,7 @@ function ShopDrawer() {
                     </ListItemButton>
                     <Collapse in={openShopItems} timeout="auto" unmountOnExit>
                         <List component="div" disablePadding>
-                            <ListItemButton sx={{ pl: 4 }}>
+                            <ListItemButton sx={{ pl: 4 }} onClick={() => navigate('/shop')}>
                                 <ListItemIcon>
                                     <FeedOutlinedIcon />
                                 </ListItemIcon>

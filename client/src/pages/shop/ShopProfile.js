@@ -2,7 +2,7 @@ import { Card, Typography, Box, Grid, Input, Button } from '@mui/joy'
 import React from 'react'
 import { Avatar } from '@mui/material'
 
-function ShopProfile({shop}) {
+function ShopProfile({ shop }) {
     const [backgroundSelectedImage, setBackgroundSelectedImage] = React.useState(null);
     const [avatarSelectedImage, setAvatarSelectedImage] = React.useState(null);
 
@@ -64,7 +64,7 @@ function ShopProfile({shop}) {
         <Card sx={{ p: 4 }}>
             <Typography level='h3'>Hồ Sơ Shop</Typography>
             <Typography level='p'>Xem tình trạng Shop và cập nhật hồ sơ Shop của bạn</Typography>
-            <Box component="form" onSubmit={handleSubmit} encType='multipart/form-data' sx={{mt: 3}}>
+            <Box component="form" onSubmit={handleSubmit} encType='multipart/form-data' sx={{ mt: 3 }}>
                 <Grid container rowSpacing={4} columnSpacing={5}>
                     <Grid xs={2} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'end' }}>
                         <Typography>Tên hiển thị</Typography>

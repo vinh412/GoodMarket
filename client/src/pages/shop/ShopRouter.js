@@ -9,10 +9,10 @@ import CreateShop from './CreateShop';
 function ShopRouter() {
     return (
         <Routes>
-            <Route path="/" element={<ShopLayout />} >
+            <Route element={<ShopLayout />} >
                 <Route index element={<MyShop />} />
-                <Route path="profile" element={<MyShop />} />
-                <Route path="products" element={<MyShop />} />
+                <Route path="/shop/profile" element={<h1>Profile</h1>} />
+                <Route path="/shop/products" element={<h1>Products</h1>} />
             </Route>
             <Route path='/create-shop' element={<CreateShop />} />
         </Routes>

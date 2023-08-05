@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 import Header from '../components/navigation/Header'
 import { Toolbar } from '@mui/material';
 
-function Layout() {
+function DefaultLayout() {
   return (
     <>
       <Header />
@@ -13,4 +13,4 @@ function Layout() {
   )
 }
 
-export default Layout
+export default DefaultLayout
