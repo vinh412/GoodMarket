@@ -37,7 +37,7 @@ function BasicInfo() {
               }>
               <Card sx={{ width: "5rem", height: "5rem" }}>
                 <CardCover>
-                  <img src={URL.createObjectURL(image)} />
+                  <img src={URL.createObjectURL(image)} alt={`product-${i}`} />
                 </CardCover>
               </Card>
             </Badge>
@@ -58,7 +58,7 @@ function BasicInfo() {
           <Typography>Tên sản phẩm</Typography>
         </Grid>
         <Grid xs={10}>
-          <Input type='text' />
+          <Input type='text' required />
         </Grid>
         <Grid xs={2}>
           <Typography sx={{ alignItems: "start", pt: 1 }}>Mô tả sản phẩm</Typography>
