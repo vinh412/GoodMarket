@@ -4,7 +4,7 @@ import AddRoundedIcon from '@mui/icons-material/AddRounded';
 import AddModel from './AddModel';
 import ModelTable from './ModelTable';
 
-function SaleInfo() {
+function SaleInfo({tierVariations, setTierVariations}) {
   const initTierVariation = {
     id: 1,
     name: null,
@@ -15,7 +15,7 @@ function SaleInfo() {
       }
     ],
   };
-  const [tierVariations, setTierVariations] = React.useState([]);
+  
   return (
     <Card sx={{ mt: 3 }}>
       <Typography level='h3'>Thông tin bán hàng</Typography>
@@ -36,13 +36,13 @@ function SaleInfo() {
               <Typography>Giá</Typography>
             </Grid>
             <Grid xs={10}>
-              <Input type='text' required/>
+              <Input type='text' name='price' required/>
             </Grid>
             <Grid xs={2}>
               <Typography>Số lượng</Typography>
             </Grid>
             <Grid xs={10}>
-              <Input type='number' required/>
+              <Input type='number' name='quantity' required/>
             </Grid>
           </>
         }

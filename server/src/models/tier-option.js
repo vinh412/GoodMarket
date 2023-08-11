@@ -11,12 +11,14 @@ module.exports = (sequelize, DataTypes) => {
          */
         static associate(models) {
             // define association here
-            TierOption.belongsTo(models.TierVariation);
+            TierOption.TierVariation = TierOption.belongsTo(models.TierVariation, {
+                foreignKey: 'tierVariationId'
+            });
         }
 
     }
     TierOption.init({
-        tierId: {
+        tierVariationId: {
             allowNull: false,
             type: DataTypes.INTEGER,
         },

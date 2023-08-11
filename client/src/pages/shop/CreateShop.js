@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../hooks/useAuthContext';
 function CreateShop() {
     const navigate = useNavigate();
-    const { user } = useAuthContext();
+    const { user, dispatch } = useAuthContext();
     const [error, setError] = React.useState();
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -30,6 +30,8 @@ function CreateShop() {
             if(data.error){
                 setError(data.error);
             }else{
+                localStorage.setItem('shop', JSON.stringify(data.shop));
+                dispatch({type: 'LOGIN', payload: {user: user, shop: data.shop}});
                 navigate(0);
             }
 

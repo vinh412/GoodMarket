@@ -1,14 +1,18 @@
 import { Card, Typography, Box, Grid, Input, Button } from '@mui/joy'
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 import { Avatar } from '@mui/material'
 
 function ShopProfile({ shop }) {
+    const navigate = useNavigate();
     const [backgroundSelectedImage, setBackgroundSelectedImage] = React.useState(null);
     const [avatarSelectedImage, setAvatarSelectedImage] = React.useState(null);
 
     // This function will be triggered when the file field change
     const backgroundImageChange = (e) => {
         if (e.target.files && e.target.files.length > 0) {
+            console.log(e.target.files);
+            console.log(e.target.files[0]);
             setBackgroundSelectedImage(e.target.files[0]);
         }
     };
@@ -54,6 +58,7 @@ function ShopProfile({ shop }) {
             })
             .then(data => {
                 console.log('Server response:', data);
+                navigate(0);
             })
             .catch(error => {
                 console.error('Error uploading file:', error);
@@ -70,7 +75,7 @@ function ShopProfile({ shop }) {
                         <Typography>Tên hiển thị</Typography>
                     </Grid>
                     <Grid xs={10}>
-                        <Input type='text' name='displayname' value={shop.displayName} required />
+                        <Input type='text' name='displayname' placeholder={shop.displayName} required />
                     </Grid>
                     <Grid xs={2} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'end' }}>
                         <Typography>Shop Avatar</Typography>

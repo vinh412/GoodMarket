@@ -2,8 +2,7 @@ import React from 'react'
 import { Badge, Card, CardCover, ChipDelete, Grid, IconButton, Input, Textarea, Typography } from '@mui/joy'
 import AddPhotoAlternateRoundedIcon from '@mui/icons-material/AddPhotoAlternateRounded';
 
-function BasicInfo() {
-  const [selectedImage, setSelectedImage] = React.useState([]);
+function BasicInfo({selectedImage, setSelectedImage}) {
 
   const onImageChange = (e) => {
     if (e.target.files && e.target.files.length > 0) {
@@ -18,7 +17,7 @@ function BasicInfo() {
         <Grid xs={2}>
           <Typography>Hình ảnh sản phẩm</Typography>
         </Grid>
-        <Grid xs={10} sx={{ display: "flex", gap: "8px" }}>
+        <Grid xs={10} sx={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
           {Boolean(selectedImage.length) && selectedImage.map((image, i) =>
             <Badge
               key={i}
@@ -58,13 +57,13 @@ function BasicInfo() {
           <Typography>Tên sản phẩm</Typography>
         </Grid>
         <Grid xs={10}>
-          <Input type='text' required />
+          <Input type='text' name='name' required />
         </Grid>
         <Grid xs={2}>
           <Typography sx={{ alignItems: "start", pt: 1 }}>Mô tả sản phẩm</Typography>
         </Grid>
         <Grid xs={10}>
-          <Textarea minRows={5} variant='soft' />
+          <Textarea name='desc' minRows={5} variant='soft' />
         </Grid>
       </Grid>
 

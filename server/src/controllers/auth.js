@@ -44,7 +44,7 @@ export const checkUser = (req, res) => {
     if (token) {
         jwt.verify(token, process.env.JWT_SECRET, async (err, decodedToken) => {
             if (err) {
-                return res.status(401).json({message: "Invalid token", user: null});
+                return res.status(401).json({ message: "Invalid token", user: null });
             } else {
                 let user = await db.User.findOne({
                     attributes: ['id', 'email', 'lastname', 'firstname'],
@@ -52,11 +52,11 @@ export const checkUser = (req, res) => {
                         id: decodedToken.id
                     }
                 });
-                return res.status(200).json({user: user});
+                return res.status(200).json({ user: user });
             }
         });
     } else {
-        return res.status(401).json({user: null, message: 'No token found'});
+        return res.status(401).json({ user: null, message: 'No token found' });
     }
 };
 
@@ -71,7 +71,7 @@ export const register = async (req, res) => {
         const user = await db.User.create({ email, password, lastname, firstname });
         const token = createToken(user.id);
         res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
-        res.status(201).json({ user: { id: user.id, email, lastname, firstname } });
+        res.status(201).json({ user: { id: user.id, email, lastname, firstname }, shop: null });
     } catch (err) {
         const error = handleError(err)
         res.status(500).json({ error });
@@ -104,10 +104,19 @@ export const login = async (req, res) => {
         //     });
         // }
         const user = await db.User.login(email, password);
+        const shop = await db.Shop.getShopById(user.id);
 
         const token = createToken(user.id);
         res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
-        res.status(200).json({ user: { id: user.id, email: user.email, lastname: user.lastname, firstname: user.firstname } });
+        res.status(200).json({
+            user: {
+                id: user.id,
+                email: user.email,
+                lastname: user.lastname,
+                firstname: user.firstname
+            },
+            shop: shop
+        });
     } catch (err) {
         console.log(err);
         const error = handleError(err)

@@ -9,7 +9,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      tierId: {
+      tierVariationId: {
         allowNull: false,
         type: Sequelize.INTEGER
       },

@@ -23,8 +23,8 @@ function ModelTable({ tierVariations }) {
                             !tierVariations[1] ?
                                 <tr>
                                     <td>{item.name}</td>
-                                    <td><Input /></td>
-                                    <td><Input /></td>
+                                    <td><Input type='number' name={`price${item.id}`} required/></td>
+                                    <td><Input type='number' name={`quantity${item.id}`} required/></td>
                                 </tr>
                                 :
                                 <>
@@ -34,8 +34,8 @@ function ModelTable({ tierVariations }) {
                                     {tierVariations[1].options.map((option) =>
                                         <tr key={option.id}>
                                             <td>{option.name}</td>
-                                            <td><Input /></td>
-                                            <td><Input /></td>
+                                            <td><Input type='number' name={`price${item.id}${option.id}`} required/></td>
+                                            <td><Input type='number' name={`quantity${item.id}${option.id}`} required/></td>
                                         </tr>
                                     )}
                                 </>

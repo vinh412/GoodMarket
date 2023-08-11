@@ -4,13 +4,8 @@ const {Op} = require('sequelize')
 // CREATE
 export const createTierVariation = (tierVariation) => new Promise(async(resolve, reject) => {
     try{
-        console.log(tierVariation);
         const response = await db.TierVariation.create(tierVariation);
-
-        resolve({
-            err: response ? 0 : 1,
-            response
-        })
+        resolve(response)
     } catch (error){
         reject(error)
     }

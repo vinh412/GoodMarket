@@ -81,6 +81,7 @@ export default function Header() {
       await fetch('api/v1/auth/logout');
       dispatch({type: 'LOGOUT'});
       localStorage.removeItem('user');
+      localStorage.removeItem('shop');
     }catch(err){
       console.log(err);
     }

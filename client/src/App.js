@@ -58,7 +58,7 @@ function App() {
         <Routes>
           <Route element={<DefaultLayout />} >
             <Route index element={<Home />} />
-            <Route path="/:productId" element={<Product />} />
+            <Route path="/product/:productId" element={<Product />} />
             <Route path="/blogs" element={user ? <h1>Blogs</h1> : <Navigate to="/login" />} />
             <Route path="/shop" element={user ? <ShopLayout /> : <Navigate to="/login" />}>
               <Route index element={<MyShop />} />

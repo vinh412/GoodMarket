@@ -1,5 +1,6 @@
 import db from '../models'
 import { v4 as uuidv4 } from 'uuid';
+import * as shopServices from '../services/shop';
 const path = require('path')
 
 export const createShop = async (req, res) => {
@@ -75,3 +76,12 @@ export const updateProfileShop = async (req, res) => {
 
     res.status(200).json({message: 'Update displayname, avatar, background success'});
 };
+
+export const getAllShopsWithAllProducts = async (req, res) => {
+    try {
+        const data = await shopServices.getAllShopsWithAllProducts();
+        res.status(200).json({data: data});
+    }catch (error) {
+        res.status(500).json({error});
+    }
+}

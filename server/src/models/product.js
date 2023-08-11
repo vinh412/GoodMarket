@@ -23,6 +23,10 @@ module.exports = (sequelize, DataTypes) => {
                 foreignKey: "productId",
                 as: "models"
             });
+            Product.Shop = Product.belongsTo(models.Shop, {
+                foreignKey: "shopId",
+                as: 'shop'
+            });
         }
 
     }
@@ -54,18 +58,40 @@ module.exports = (sequelize, DataTypes) => {
         },
         rating: {
             type: DataTypes.FLOAT
-        },    
+        },
         numberReviews: {
             type: DataTypes.INTEGER
-        },    
+        },
         sold: {
             type: DataTypes.INTEGER
-        },    
+        },
         description: {
             type: DataTypes.TEXT
         },
     },
         {
+            hooks: {
+                beforeCreate: (product) => {
+                    if(product.models && product.models.length > 0) {
+                        let minPrice = Number(product.models[0].price);
+                        let maxPrice = Number(product.models[0].price);
+                        let quantity = 0;
+                        product.models.forEach(model => {
+                            let modelPrice = Number(model.price);
+                            if(minPrice > modelPrice){
+                                minPrice = modelPrice;
+                            }
+                            if(maxPrice < modelPrice){
+                                maxPrice = modelPrice;
+                            }
+                            quantity = quantity + Number(model.quantity);
+                        });
+                        product.maxPrice = maxPrice;
+                        product.minPrice = minPrice;
+                        product.quantity = quantity;
+                    }
+                }
+            },
             sequelize,
             modelName: 'Product',
         });

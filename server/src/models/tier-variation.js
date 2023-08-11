@@ -11,9 +11,11 @@ module.exports = (sequelize, DataTypes) => {
          */
         static associate(models) {
             // define association here
-            TierVariation.belongsTo(models.Product);
+            TierVariation.belongsTo(models.Product, {
+                foreignKey: 'productId',
+            });
             TierVariation.TierOption = TierVariation.hasMany(models.TierOption, {
-                foreignKey: "tierId",
+                foreignKey: "tierVariationId",
                 as: "options"
             })
         }

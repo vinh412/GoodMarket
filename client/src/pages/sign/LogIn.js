@@ -34,8 +34,9 @@ function LogIn() {
                 setError(data.error);
             }
             if(data.user){
-                localStorage.setItem('user', JSON.stringify(data.user))
-                dispatch({type: 'LOGIN', payload: data.user});
+                localStorage.setItem('user', JSON.stringify(data.user));
+                localStorage.setItem('shop', JSON.stringify(data.shop));
+                dispatch({type: 'LOGIN', payload: {user: data.user, shop: data.shop}});
                 navigate("../");
             }
         }catch (err) {

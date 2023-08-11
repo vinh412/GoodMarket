@@ -27,7 +27,6 @@ function MyShop() {
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               <InfoShopCard shop={shop} />
               <ShopProfile shop={shop} />
-              <ProductCard />
             </Box>
           ) : (
             <CreateShop />

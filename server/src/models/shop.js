@@ -11,7 +11,20 @@ module.exports = (sequelize, DataTypes) => {
          */
         static associate(models) {
             // define association here
+            Shop.Product = Shop.hasMany(models.Product, {
+                foreignKey: 'shopId',
+                as: 'products'
+            });
         }
+
+        static async getShopById(userId) {
+            const shop = await this.findOne({
+              where: {
+                userId: userId
+              }
+            });
+            return shop;
+          }
 
     }
     Shop.init({

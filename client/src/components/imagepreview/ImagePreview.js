@@ -8,7 +8,7 @@ const ImagePreview = ({ images }) => {
     images.forEach((element, index) => {
         if (index < 5)
             items.push(
-                <Grid xs={3}>
+                <Grid xs={3} key={index}>
                     <AspectRatio ratio={1} >
                         <img className='previewImg' src={element.src} alt="" onClick={(e) => { setOpenModal(true); }} />
                     </AspectRatio>
